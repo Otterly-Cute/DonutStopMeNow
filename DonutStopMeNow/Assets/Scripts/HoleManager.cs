@@ -24,7 +24,7 @@ public class HoleManager : MonoBehaviour
     {
         if (other.CompareTag("collectable"))
         {
-            ProgressBar(number: 20);
+            //ProgressBar(number: 20);
 
             other.gameObject.SetActive(false);
         }

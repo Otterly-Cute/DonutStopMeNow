@@ -14,6 +14,7 @@ public class CameraMovement : MonoBehaviour
     //private Vector3 moveDirection;
     //public float moveSpeed;
 
+    [SerializeField] GameObject player;
     private Camera cam;
     public float zoomSpeed;
     public float minZoom = 30;
