@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] GameObject player;
     private Camera cam;
-    public float zoomSpeed;
+    public float zoomSpeed = 10;
     public float minZoom = 30;
     public float maxZoom = 100;
 
