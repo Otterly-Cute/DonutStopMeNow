@@ -1,12 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using Unity.Cinemachine;
+using UnityEngine.AI;
 
 
 public class HoleManager : MonoBehaviour
 {
-    //[SerializeField] CinemachineVirtualCamera vcam;
+    [SerializeField] CinemachineCamera vcam;
+
+    public CinemachineFollow follow;
+    public NavMeshAgent agent;
+    public float speed;
     [SerializeField] ParticleSystem pink,purple,blue,green,orange,bold;
+    
+    private void Start()
+    {
+        follow = vcam.GetComponent<CinemachineFollow>();
+        agent = gameObject.GetComponentInParent<NavMeshAgent>();
+    }
+
+   
     private void OnTriggerEnter(Collider other)
     {
         string tag = other.tag;
@@ -34,18 +47,15 @@ public class HoleManager : MonoBehaviour
 
                 gameObject.transform.parent.localScale = new Vector3(2,1,2);
 
-                
-                // No more objects to collect
-                //UIManager.Instance.ShowLevelCompletedUI();
+                agent.speed = speed;
+                HoleMovement.Instance.UpdateSpeed();
 
-                //Invoke("NextLevel", 2f);
+                follow.FollowOffset = new (0, 10, -1);
+
+               
             }
             
         }
     }
 
-    //void NextLevel()
-    //{
-    //    Levels.Instance.LoadNextLevel();
-    //}
 }
